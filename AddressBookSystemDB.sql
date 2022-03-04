@@ -23,3 +23,10 @@ Insert Into AddressBook Values('saguna', 'Ukade', 'Pune', 'Pune', 'Maharashtra',
 						('Ganesh', 'Shahane', 'Mumbai', 'Kolhapur', 'Maharashtra', 098563, 9844334170, 'ganesh08@gmail.com'),	
 						('Raghav', 'pande', 'Satara', 'Sangli', 'Maharashtra', 342156, 9087741630, 'raghav908@gmail.com');
 Select * From AddressBook;
+
+------ UC-4 Edit Existing AddressBook Table -------
+Update AddressBook Set EmailId='saguukade12@gmail.com' Where FirstName='Saguna';
+Update AddressBook Set Address='Sec-40', City = 'chennai', StateName = 'Maharashtra' Where FirstName='Ganesh';
+Update AddressBook Set Phonenum=9087741630 Where FirstName='Raghav';
+Select * From AddressBook;
+			
