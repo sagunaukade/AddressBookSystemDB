@@ -42,4 +42,8 @@ SELECT city,COUNT(city) as Total_Count
 FROM AddressBook 
 GROUP BY city;
 
+------ UC-8 Sort Contacts By Name In A City ----------
+SELECT * FROM AddressBook 
+WHERE city = 'Mumbai'
+ORDER BY firstname;
 			
