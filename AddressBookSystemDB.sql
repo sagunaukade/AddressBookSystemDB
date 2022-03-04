@@ -37,4 +37,9 @@ Select * From AddressBook;
 ----- UC-6 Retrieve Person Record From Table By City Or State ---------
 Select * From AddressBook Where City='Kolhapur' Or StateName='Maharshtra';
 
+------ UC-7 Count contact by city -------
+SELECT city,COUNT(city) as Total_Count
+FROM AddressBook 
+GROUP BY city;
+
 			
