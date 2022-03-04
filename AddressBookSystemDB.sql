@@ -15,3 +15,11 @@ Create Table AddressBook(
 	PhoneNum bigint,
 	EmailId varchar(50)
 );
+
+------- UC-3 Insert Data Into The AddressBook Table -----------
+Insert Into AddressBook Values('saguna', 'Ukade', 'Pune', 'Pune', 'Maharashtra', 996123, 6754321987, 'saguu@gmail.com'),
+						('Amruta', 'Sharma', 'Vashim', 'Mumbai', 'Maharashtra', 879456, 9807654321, 'amruta88@gmail.com'),	
+						('Lavanya', 'Kulkarni', 'Vasai', 'Satara', 'Maharashtra', 965674, 7412585542, 'lavanya12@gmail.com'),	
+						('Ganesh', 'Shahane', 'Mumbai', 'Kolhapur', 'Maharashtra', 098563, 9844334170, 'ganesh08@gmail.com'),	
+						('Raghav', 'pande', 'Satara', 'Sangli', 'Maharashtra', 342156, 9087741630, 'raghav908@gmail.com');
+Select * From AddressBook;
