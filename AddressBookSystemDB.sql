@@ -33,4 +33,8 @@ Select * From AddressBook;
 ----- UC-5 Delete Existing Contact From Table --------
 Delete From AddressBook Where FirstName='Amruta' And LastName = 'Sharma';
 Select * From AddressBook;
+
+----- UC-6 Retrieve Person Record From Table By City Or State ---------
+Select * From AddressBook Where City='Kolhapur' Or StateName='Maharshtra';
+
 			
