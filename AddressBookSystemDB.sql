@@ -66,3 +66,8 @@ WHERE firstname in ('Meg');
 
 UPDATE AddressBook
 SET City = 'Pune';
+
+------ UC-10 Get Count By Type ----------
+SELECT Contact_Type,COUNT(lastname) AS Total_Count
+FROM AddressBook
+GROUP BY Contact_Type;
