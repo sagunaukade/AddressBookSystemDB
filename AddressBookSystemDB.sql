@@ -67,7 +67,79 @@ WHERE firstname in ('Meg');
 UPDATE AddressBook
 SET City = 'Pune';
 
------- UC-10 Get Count By Type ----------
-SELECT Contact_Type,COUNT(lastname) AS Total_Count
-FROM AddressBook
-GROUP BY Contact_Type;
+------ UC-10 Ability to get number of contact persons by Type------
+select Count(*) as NumberOfContacts,Type
+from Address_Book
+Group by Type
+
+--Update values for Type=Family--
+update Address_Book
+set AddressBookName='Mom',Type='Family'
+where FirstName='Saguna'
+
+--Update values for Type=Profession--
+update Address_Book
+set AddressBookName='Manager',Type='Profession'
+where FirstName='Amruta'
+
+-------- Creating Tables Based on ER Diagrams  --------
+create table Address_Book(
+Address_BookID int identity(1,1) primary key,
+Address_BookName varchar(200)
+)
+insert into Address_Book values ('Ashs Book'),('Amruta Book')
+select * from Address_Book
+
+create table Contact_Person(
+AddressBook_ID int,
+Contact_ID int identity(1,1) primary key,
+FirstName varchar(100),
+SecondName varchar(100),
+Address varchar(250),
+City varchar(100),
+State varchar(100),
+zip BigInt,
+PhoneNumber BigInt,
+Email varchar(200),
+foreign key (AddressBook_ID) references Address_Book(Address_BookID))
+
+insert into Contact_Person values
+(1,'Saguna','Vargheese','645 Catherine Street','Bangalore','Karnataka',243001,9842905050,'saguna@gmail.com'),
+(2,'Amruta','Mathialagan','836 Heritage Rd','Chennai','Tamil Nadu',134002,98402000,'amruta11@gmail.com'),
+(2,'Lavanya','Yadav','19 Augusta Avenue','Lucknow','Uttar Pradesh',113201,87210505053,'lavanya09@gmail.com'),
+(1,'Raghav','Satesh','356 Newburgh','Bangalore','Karnataka',243001,9842905050,'raghav33@gmail.com')
+
+select * from Contact_Person
+
+create table ContactType
+(ContactType_ID int identity(1,1) primary key,
+ContactType_Name varchar(200)
+)
+
+insert into ContactType values
+('Family'),('Friends'),('Profession')
+
+select * from ContactType
+
+create Table TypeManager(
+ContactType_Identity int,
+Contact_Identity int,
+foreign key (ContactType_Identity) references ContactType(ContactType_ID),
+foreign key (Contact_Identity) references Contact_Person(Contact_ID)
+)
+
+insert into TypeManager values
+(1,3),
+(2,3),
+(3,1),
+(1,2),
+(2,4)
+select * from TypeManager
+
+------ UC-11 Create Contact for both Family and Friends Type ------ 
+
+select Address_BookName,Concat(FirstName,' ',SecondName) as Name,Concat(Address,' ,',City,' ,',State,' ,',zip) as Address,PhoneNumber,Email,ContactType_Name
+from Address_Book 
+Full JOIN Contact_Person on Address_Book.Address_BookID=AddressBook_ID 
+Full JOIN TypeManager on TypeManager.Contact_Identity=Contact_ID
+Full JOIN ContactType on TypeManager.ContactType_Identity=ContactType_ID
